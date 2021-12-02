@@ -1,0 +1,26 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hojak99.kakaopay.infrastructure.mapper.UserInvestingHistoryMapper">
+
+    <resultMap id="history" type="com.hojak99.kakaopay.infrastructure.entity.rdb.UserInvestingHistoryRdbEntity"
+               autoMapping="true"/>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO user_investing_history
+        (user_id, product_id, investing_amount, created_at, title, total_investing_amount)
+        VALUES (#{userId}, #{productId}, #{investingAmount}, #{createdAt}, #{title}, #{totalInvestingAmount})
+    </insert>
+
+    <select id="findAllByUserId" resultMap="history">
+        SELECT id,
+               request_id       as requestId,
+               user_id          as userId,
+               product_id       as productId,
+               investing_amount as investingAmount,
+               created_at       as createdAt,
+               title, as title,
+            total_investing_amount as totalInvestingAmount
+        FROM user_investing_history
+        WHERE user_id = #{userId}
+    </select>
+
+</mapper>
