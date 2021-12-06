@@ -121,3 +121,4 @@ decrby 명령어 이용해 구현하려고 했으나, 아래 상황이 존재할
     - entity: 외부 구현체에 의존하는 entity 들이 존재
     - mapper: 외부 구현체(mybatis)에 대한 mapper 가 존재
   
+
